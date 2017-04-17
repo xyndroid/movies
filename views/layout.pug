@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    title #{title}
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='Movies Project, CS405 University of Kentucky')
+    meta(name='author', content='Andy and Corey')
+    link(rel='icon', href='images/uky-icon.png')
+    link(href='stylesheets/bootstrap.min.css', rel='stylesheet')
+    link(href='stylesheets/style.css', rel='stylesheet')
+    // login form
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
+    link(href='http://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    link(href='stylesheets/login-form.css', rel='stylesheet')
+  body(class=jumbotron)
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') Movies by Wildcats
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              a(href='/') Home
+            li
+              a(href='/movies') Movies
+            li
+              a(href='/profile') Profile
+            li
+              a(href='/contact') Contact
+            li
+              a(href='/login') Login
+              script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+              script.window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\\/script>')
+              script(src='javascripts/bootstrap.min.js')
+              script(src='javascripts/bootstrap-contact-form.js')
+              script(src='../../assets/js/ie10-viewport-bug-workaround.js')
+              script(src='javascripts/login-form.js')
+    block content
+    footer
+      p Copyright &copy; #{new Date().getFullYear()} Movies by C.A
