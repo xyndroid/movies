@@ -1,6 +1,7 @@
 // 1
 var express = require('express');
 var mysql = require('mysql');
+var fs = require('fs');
 
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -14,9 +15,44 @@ var profile = require('./routes/profile');
 var login = require('./routes/login');
 var movies = require('./routes/movies');
 var contact = require('./routes/contact');
+var register = require('./routes/register');
+var reset = require('./routes/reset');
 
 // 2
 var app = express();
+
+var host;
+var user;
+var pswd;
+var db;
+
+var databaseConfig = fs.readFileSync('/Users/Natsagaa/Documents/UK/CS405/project/config', 'utf8');
+
+databaseConfig = databaseConfig.split('\n');
+
+var connection = mysql.createConnection({
+  host: databaseConfig[0],
+  user: databaseConfig[1],
+  password: databaseConfig[2],
+  database: databaseConfig[3]
+});
+
+connection.connect(function(err){
+  if(err){
+    console.log('Database is not connected!');
+    throw err;
+  }else{
+    console.log('Connected');
+  }
+});
+
+var query = connection.query('SELECT * FROM user', function(error, result){
+  if (error)
+    console.log('Error in selecting users\n');
+  else {
+      console.log('user\'s last name is ' + result[1].fname);
+  }
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,6 +72,8 @@ app.use('/movies', movies);
 app.use('/login', login);
 app.use('/profile', profile);
 app.use('/contact', contact);
+app.use('/register', register);
+app.use('/reset', reset);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

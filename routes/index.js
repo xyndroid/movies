@@ -31,4 +31,13 @@ router.get('/contact', function(req, res, next) {
   res.render('contact', { title: 'Contact' });
 });
 
+/* GET contact page. */
+router.get('/register', function(req, res, next) {
+  res.render('register', { title: 'Registration' });
+});
+
+/* GET contact page. */
+router.get('/reset', function(req, res, next) {
+  res.render('reset', { title: 'Reset password' });
+});
 module.exports = router;

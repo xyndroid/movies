@@ -1,6 +1,6 @@
 (function($) {
     "use strict";
-
+    alert($);
 	// Options for Message
 	//----------------------------------------------
   var options = {
@@ -21,11 +21,13 @@
   	  lg_password: "required",
     },
   	errorClass: "form-invalid"
-  });
+  }
+  alert('hello');
+);
 
 	// Form Submission
   $("#login-form").submit(function() {
-  	remove_loading($(this));
+    remove_loading($(this));
 
 		if(options['useAJAX'] == true)
 		{
@@ -138,24 +140,19 @@
   	$form.find('.login-form-main-message').addClass('show error').html(options['msg-error']);
   }
 
-	// // Dummy Submit Form (Remove this)
-	// //----------------------------------------------
-	// // This is just a dummy form submission. You should use your AJAX function or remove this function if you are not using AJAX.
-  // function dummy_submit_form($form)
-  // {
-  // 	if($form.valid())
-  // 	{
-  // 		form_loading($form);
-  //
-  // 		setTimeout(function() {
-  // 			form_success($form);
-  // 		}, 2000);
-  // 	}
-  // }
+	// Dummy Submit Form (Remove this)
+	//----------------------------------------------
+	// This is just a dummy form submission. You should use your AJAX function or remove this function if you are not using AJAX.
+  function dummy_submit_form($form)
+  {
+  	if($form.valid())
+  	{
+  		form_loading($form);
+      alert('hello');
+  		setTimeout(function() {
+  			form_success($form);
+  		}, 2000);
+  	}
+  }
 
-  $(document).ready(function(){
-    alert('page loaded');  // alert to confirm the page is loaded
-    $('#register-form').hide(); //enter the class or id of the particular html element which you wish to hide.
-    $("#forgot-password-form").hide();
-  });
 })(jQuery);
