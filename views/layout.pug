@@ -32,9 +32,21 @@ html
             li
               a(href='/movies') Movies
             li
-              a(href='/profile') Profile
-            li
               a(href='/contact') Contact
+          ul.nav.navbar-nav.navbar-right#dropdown(style='display:none')
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                | Andy Baljinnyam
+                span.caret
+              ul.dropdown-menu
+                li
+                  a(href='/profile') Profile
+                li
+                  a(href='/watchlist') Watchlist
+                li.divider(role='separator')
+                li
+                  a(href='/logout') Logout
+          ul.nav.navbar-nav.navbar-right#login
             li
               a(href='/login') Login
               script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')

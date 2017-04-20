@@ -8,51 +8,20 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var index = require('./routes/index');
-var user = require('./routes/user');
 var profile = require('./routes/profile');
 var login = require('./routes/login');
+var logout = require('./routes/logout');
 var movies = require('./routes/movies');
 var contact = require('./routes/contact');
 var register = require('./routes/register');
 var reset = require('./routes/reset');
+var watchlist = require('./routes/watchlist');
 
 // 2
 var app = express();
-
-var host;
-var user;
-var pswd;
-var db;
-
-var databaseConfig = fs.readFileSync('/Users/Natsagaa/Documents/UK/CS405/project/config', 'utf8');
-
-databaseConfig = databaseConfig.split('\n');
-
-var connection = mysql.createConnection({
-  host: databaseConfig[0],
-  user: databaseConfig[1],
-  password: databaseConfig[2],
-  database: databaseConfig[3]
-});
-
-connection.connect(function(err){
-  if(err){
-    console.log('Database is not connected!');
-    throw err;
-  }else{
-    console.log('Connected');
-  }
-});
-
-var query = connection.query('SELECT * FROM user', function(error, result){
-  if (error)
-    console.log('Error in selecting users\n');
-  else {
-    console.log('user\'s last name is ' + result[1].fname);
-  }
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -66,14 +35,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({resave: true, saveUninitialized: true, secret: 'SOMERANDOMSECRETHERE', cookie: { maxAge: 60000 }}));
+
 app.use('/', index);
-app.use('/user', user);
 app.use('/movies', movies);
 app.use('/login', login);
+app.use('/logout', logout);
 app.use('/profile', profile);
 app.use('/contact', contact);
 app.use('/register', register);
 app.use('/reset', reset);
+app.use('/watchlist', watchlist);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

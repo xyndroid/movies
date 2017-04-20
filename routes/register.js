@@ -3,8 +3,13 @@ var router = express.Router();
 var nodemailer = require('nodemailer');
 
 /* GET contact . */
-router.get('/register', function(req, res, next) {
-  res.send('Register Page');
+router.get('/', function(req, res, next) {
+  res.render('register', {title: 'Registration page'});
+});
+
+/* GET contact . */
+router.post('/', function(req, res, next) {
+  res.render('register', {title: 'Registration page'});
 });
 
 module.exports = router;

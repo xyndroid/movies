@@ -1,9 +1,11 @@
 extends layout
 
 block content
-  h1= title
+  .container-fluid
+    .row
+      h1=  title 
   .container
-  form#contact_form.well.form-horizontal(action='/send', method='post')
+  form#contact_form.well.form-horizontal(action='/contact/send', method='post')
     fieldset
       .form-group
         label.col-md-4.control-label First Name
