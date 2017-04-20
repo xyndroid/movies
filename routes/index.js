@@ -32,12 +32,12 @@ router.get('/contact', function(req, res, next) {
 });
 
 /* GET contact page. */
-router.get('/register', function(req, res, next) {
+router.post('/register', function(req, res, next) {
   res.render('register', { title: 'Registration' });
 });
 
 /* GET contact page. */
-router.get('/reset', function(req, res, next) {
+router.post('/reset', function(req, res, next) {
   res.render('reset', { title: 'Reset password' });
 });
 module.exports = router;

@@ -50,7 +50,7 @@ var query = connection.query('SELECT * FROM user', function(error, result){
   if (error)
     console.log('Error in selecting users\n');
   else {
-      console.log('user\'s last name is ' + result[1].fname);
+    console.log('user\'s last name is ' + result[1].fname);
   }
 });
 
