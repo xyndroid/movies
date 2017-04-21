@@ -3,12 +3,12 @@ extends layout
 block content
   .container
     each movie in movies
-      a(href='/movie/')
-        .container.border.rounded(style='margin-bottom:10px;')
+      a(href='/movie?mid='+movie["id"])
+        .container(style='margin-bottom:10px;')
           .row
             .container
               .col.col-lg-3
-                  img(src='/images/'+movie['cover'], alt=movie['title'], width='150')
+                  img(src="/images/"+movie['cover'], alt=movie['title'], width='150')
               .col.col-lg-3
                 .h3
                   span= movie['title']

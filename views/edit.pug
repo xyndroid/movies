@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  p= title
+  .container
+    form(action='/edit', method='POST')
+      input(type='hidden', value=movie_id, name='movie_id')
+      input(type='text', value=title, name='title')
+      input(type='text', value=description, name='description')
+      input(type='text', value=rdate, name='rdate')
+      input(type='text', value=cover, name='cover')
+      input(type='text', value=language, name='language')
+      input(type='text', value=duration, name='duration')
+      input(type='submit', value='Submit')

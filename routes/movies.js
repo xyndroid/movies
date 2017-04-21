@@ -1,19 +1,13 @@
 var express = require('express');
 var pool = require('../dbconnection');
 var router = express.Router();
-var movies;
-var movie_title;
-var movie_description;
-var movie_release_date;
-var movie_language;
-var movie_duration;
 
 /* GET movies listing. */
 router.get('/', function(req, res, next) {
   query = ' select m.id, m.title, m.description, m.rdate, m.language, m.duration, m.cover, avg(r.star) as star\
             from movie as m, rate_movie as rm, rating as r \
             where m.id = rm.movie_id and rm.rating_id = r.id \
-            group by rm.movie_id;';
+            group by rm.movie_id';
   pool.query(query, function(error, result){
     console.log('querying movies');
     console.log(query);
@@ -29,7 +23,7 @@ router.get('/', function(req, res, next) {
       }
     }
   });
-  res.render('movies', {'movies': movies, 'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Movies page'});
+  res.render('movies', {movies: movies, 'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Movies page'});
 });
 
 router.post('/', function(req, res, next) {

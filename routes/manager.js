@@ -1,21 +1,34 @@
 var express = require('express');
+var pool = require('../dbconnection');
 var router = express.Router();
 
 /* GET movies listing. */
 router.get('/', function(req, res, next) {
-  if(req.session.fullname == '' || req.session.status == false || req.session.manager == false){
-    res.render('index', {'fullname': req.session.fullname, 'status': req.session.status, title: 'Welcome ' + req.session.fullname});
-  }else{
-    res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Manager\' page'});
-  }
+  query = ' select * from movie';
+  pool.query(query, function(error, result){
+    console.log('querying movies');
+    console.log(query);
+    if(error){
+      console.log('Error in extracting movies in query');
+    }else{
+      if(result != ''){
+        console.log('movies were extracted');
+        console.log(result.length + ' movies were selected');
+        movies = result;
+      }else{
+        console.log('result from movies table is empty');
+      }
+    }
+  });
+  res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'manager page', movie:movies});
 });
 
 router.post('/', function(req, res, next) {
-  if(req.session.fullname == '' || req.session.status == false || req.session.manager == false){
-    res.render('index', {'fullname': req.session.fullname, 'status': req.session.status, title: 'Welcome ' + req.session.fullname});
-  }else{
-    res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Manager\' page'});
-  }
+  res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Manager page'});
+});
+
+router.get('/delete', function(){
+  res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Delete page'});
 });
 
 module.exports = router;
