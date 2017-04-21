@@ -36,7 +36,7 @@ router.post('/', function(req, res, next) {
      console.log(result2);
    });
 
-      res.render('Movies', {title: req.body['reg_username']});
+      res.render('login', {title: req.body['reg_username']});
 
     }else{
       console.log('Error in registering\n');

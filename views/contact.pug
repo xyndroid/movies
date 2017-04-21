@@ -1,9 +1,9 @@
 extends layout
 
 block content
-  .container-fluid
+  .container-fluid.text-center
     .row
-      h1=  title 
+      h1=  title
   .container
   form#contact_form.well.form-horizontal(action='/contact/send', method='post')
     fieldset
