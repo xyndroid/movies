@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  // Where all the magic happens
+  // LOGIN FORM
+  .text-center(style='padding:50px 0')
+    .logo login
+    // Main Form
+    .login-form-1
+      form#login-form.text-left(action='/login', method='POST')
+        .login-form-main-message
+        .main-login-form
+          .login-group
+            .form-group
+              label.sr-only(for='lg_username') Username
+              input#lg_username.form-control(type='text', name='lg_username', placeholder='Username')
+            .form-group
+              label.sr-only(for='lg_password') Password
+              input#lg_password.form-control(type='password', name='lg_password', placeholder='Password')
+            .form-group.login-group-checkbox
+              input#lg_remember(type='checkbox', name='lg_remember')
+              label(for='lg_remember') remember
+          button.login-button(type='submit')
+            i.fa.fa-chevron-right
+        .etc-login-form
+          p
+            | forgot your password?
+            a(href='/reset') click here
+          p
+            | new user?
+            a(href='/register') create new account
+    // end:Main Form
