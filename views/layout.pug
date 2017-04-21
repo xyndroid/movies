@@ -33,6 +33,11 @@ html
               a(href='/movies') Movies
             li
               a(href='/contact') Contact
+        if !fullname && !status
+          ul.nav.navbar-nav.navbar-right#login
+            li
+              a(href='/login') Login
+        else
           ul.nav.navbar-nav.navbar-right#dropdown
             li.dropdown
               a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
@@ -46,9 +51,6 @@ html
                 li.divider(role='separator')
                 li
                   a(href='/logout') Logout
-          ul.nav.navbar-nav.navbar-right#login
-            li
-              a(href='/login') Login
               script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
               script(src='https://code.jquery.com/jquery-3.2.1.min.js')
               script(src='javascripts/bootstrap.min.js')

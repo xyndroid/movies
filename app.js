@@ -34,7 +34,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(session({resave: true, saveUninitialized: true, secret: 'SOMERANDOMSECRETHERE', cookie: { maxAge: 60000 }}));
 
 app.use('/', index);
@@ -47,9 +46,9 @@ app.use('/register', register);
 app.use('/reset', reset);
 app.use('/watchlist', watchlist);
 
-
 app.use(function(req, res, next){
-  res.session.fullname = req.session.fullname;
+  res.session.status = false;
+  res.session.fullname = '';
   next();
 });
 

@@ -4,12 +4,12 @@ var nodemailer = require('nodemailer');
 
 /* GET contact . */
 router.get('/', function(req, res, next) {
-  res.render('contact', {title: 'Welcome to contact page'});
+  res.render('contact', {'fullname': req.session.fullname, 'status': req.session.status, title: 'Contact page'});
 });
 
 /* POST contact */
 router.post('/send', function(req, res, next) {
-  console.log(req.body);
+  res.render('contact', {'fullname': req.session.fullname, 'status': req.session.status, title: 'Contact page'});
 });
 
 module.exports = router;
