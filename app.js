@@ -23,6 +23,7 @@ var register = require('./routes/register');
 var reset = require('./routes/reset');
 var watchlist = require('./routes/watchlist');
 var manager = require('./routes/manager');
+var search = require('./routes/search');
 // 2
 var app = express();
 
@@ -52,6 +53,7 @@ app.use('/register', register);
 app.use('/reset', reset);
 app.use('/watchlist', watchlist);
 app.use('/manager', manager);
+app.use('/search', search);
 
 app.use(function(req, res, next){
   req.session.manager = false;

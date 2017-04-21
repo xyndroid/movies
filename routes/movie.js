@@ -31,16 +31,14 @@ router.get('/:mid', function(req, res, next) {
         // star = result[0].star;
         // duration = result[0].duration;
         console.log('movie info ' + cover + ' language ' + movie_info['language']);
+        res.render('movie', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Movie page'});
       }else{
         console.log('result from movies table is empty');
+        res.render('movie', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Movie page'});
       }
     }
   });
-  res.render('movie', { 'title' : title, 'test' : 'test phrase', 'movie' : movie_info}); //description:description, cover: cover, rdate:rdate, language: language, star: star, duration: duration});
 });
-
-
-
 
 /* GET movies listing. */
 router.get('/', function(req, res, next) {
@@ -67,13 +65,14 @@ router.get('/', function(req, res, next) {
         console.log(movie_info);
         console.log('movie_info'+ movie_info[0].language);
         console.log(movie_info.language);
-        res.render('movie', {title : 'abctitle', language: movie_info['language'], movie: movie_info});
+        //res.render('movie', {title : 'abctitle', language: movie_info['language'], movie: movie_info});
+        res.render('movie', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, movie:movie_info});
       }else{
         console.log('result from movies table is empty');
+        res.render('movie', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager});
       }
     }
   });
-
 });
 
 router.post('/', function(req, res, next) {

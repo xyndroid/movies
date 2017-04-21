@@ -2,36 +2,35 @@ extends layout
 
 block content
   .container.text-center
-    h1= title
     p Welcome to #{title}
   .container
     each movie in movies
-      a(href='/movie?mid='+movie["id"])
+      a(href='/movie?mid='+movie.id)
         .container(style='margin-top:20px;')
           .row
             .container
               .col.col-lg-2
-                  img(src="/images/"+movie['cover'], alt=movie['title'], width='50')
+                  img(src="/images/"+movie.cover, width='150')
               .col.col-lg-2
                 .h6
-                  span= movie['title']
+                  span= movie.title
                 .h6
-                  span= 'Release: ' + moment(movie['rdate']).format("MM/DD/YYYY")
+                  span= 'Release: ' + moment(movie.rdate).format("MM/DD/YYYY")
                 .h6
-                  span= 'Language: ' + movie['language']
+                  span= 'Language: ' + movie.language
                 .h6
-                  span= 'Length: ' + movie['duration']
+                  span= 'Length: ' + movie.duration
                 .h6
-                  span= 'Rating: ' + movie['star'] + '/5'
+                  span= 'Rating: ' + movie.star + '/5'
               .col.col-lg-6
                 .h6
-                  span= movie['description']
+                  span= movie.description
               .col.col-lg-2
                 .h4
                   .container
                     .row
-                      a(href='/edit?movie_id='+movie['id'], title='Edit movie information')
+                      a(href='/edit?movie_id='+movie.id, title='Edit movie information')
                         p.glyphicon.glyphicon-pencil
                     .row
-                      a(href='/manager/delete?movie_id='+movie['id'], title='Delete movie information')
+                      a(href='/manager/delete?movie_id='+movie.id, title='Delete movie information')
                         p.glyphicon.glyphicon-remove-circle

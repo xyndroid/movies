@@ -2,15 +2,15 @@ extends layout
 
 block content
   .container
-    p= movie[0].title
-    p= title
+    .row(style='margin-bottom:30px;')
+      .col.col-lg-12.text-center
+        .h1
+          span= movie[0].title
     .row
       .container
         .col.col-lg-3
           img(src='/images/' + movie[0].cover, width='250')
         .col.col-lg-3
-          .h3
-            span= movie[0].title
           .h5
             span= 'Release: ' + movie[0].rdate
           .h5

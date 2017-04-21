@@ -3,7 +3,6 @@ var bodyParser = require('body-parser');
 var pool = require('../dbconnection');
 var moment = require('moment');
 var router = express.Router();
-var movie_id;
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
@@ -18,22 +17,18 @@ router.get('/', function(req, res, next) {
       console.log('Error in extracting movies in query');
     }else{
       if(result != ''){
-        console.log(result.length + ' movies were selected');
-        movie_info = result;
-        title = result[0].title;
-        description = result[0].description;
-        cover = result[0].cover;
-        rdate = result[0].rdate;
-        language = result[0].language;
-        star = result[0].star;
-        duration = result[0].duration;
-        console.log('movie info ' + cover);
+        if(typeof result != 'undefined'){
+          console.log(result.length + ' movies were selected');
+          res.render('edit', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, movie:result});
+        }else{
+          res.render('edit', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager});
+        }
       }else{
         console.log('result from movies table is empty');
+        res.render('edit', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager});
       }
     }
   });
-  res.render('edit', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title : title, test: 'test phrase', description:description, cover: cover, rdate:rdate, language: language, star: star, duration: duration, movie_id:movie_id});
 });
 
 router.post('/', function(req, res, next){

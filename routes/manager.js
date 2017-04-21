@@ -12,24 +12,30 @@ router.get('/', function(req, res, next) {
       console.log('Error in extracting movies in query');
     }else{
       if(result != ''){
-        console.log('movies were extracted');
-        console.log(result.length + ' movies were selected');
-        movies = result;
-        res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'manager page', movie:movies});
+        if(typeof result != 'undefined'){
+          console.log('movies were extracted');
+          console.log(result.length + ' movies were selected');
+          //console.log(result);
+          console.log(result[0].id);
+          res.render('manager', {movies:result, 'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Manager\'s page'});
+        }else{
+          console.log('result from movies table is empty');
+          res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Manager\'s page'});
+        }
       }else{
         console.log('result from movies table is empty');
+        res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Manager\'s page'});
       }
     }
   });
-
 });
-
-router.post('/', function(req, res, next) {
-  res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Manager page'});
-});
-
-router.get('/delete', function(){
-  res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Delete page'});
-});
+//
+// router.post('/', function(req, res, next) {
+//   res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Manager\'s page POST'});
+// });
+//
+// router.get('/delete', function(){
+//   res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Delete page'});
+// });
 
 module.exports = router;

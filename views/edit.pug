@@ -3,12 +3,36 @@ extends layout
 block content
   p= title
   .container
-    form(action='/edit', method='POST')
-      input(type='hidden', value=movie_id, name='movie_id')
-      input(type='text', value=title, name='title')
-      input(type='text', value=description, name='description')
-      input(type='text', value=rdate, name='rdate')
-      input(type='text', value=cover, name='cover')
-      input(type='text', value=language, name='language')
-      input(type='text', value=duration, name='duration')
-      input(type='submit', value='Submit')
+    .text-center(style='padding:50px 0')
+      .logo Edit Movie
+      // Main Form
+      .login-form-1
+        form#login-form.text-left(action='/edit', method='POST')
+          .login-form-main-message
+          .main-login-form(style='width:500px;')
+            .login-group
+              .form-group
+                label.sr-only(for='edit-title') Title
+                input#edit-title.form-control(type='hidden', name='movie_id', value=movie[0].id)
+              .form-group
+                label.sr-only(for='edit-title') Title
+                input#edit-title.form-control(type='text', name='title', value=movie[0].title)
+              .form-group
+                label.sr-only(for='edit-rdate') Release Date
+                input#edit-rdate.form-control(type='text', name='rdate', value=movie[0].rdate)
+              .form-group
+                label.sr-only(for='edit-language') Language
+                input#edit-language.form-control(type='text', name='language', value=movie[0].language)
+              .form-group
+                Duration
+                input#edit-duration.form-control(type='text', name='duration', value=movie[0].duration)
+              .form-group
+                label.sr-only(for='edit-cover') Cover
+                input#edit-cover.form-control(type='text', name='cover', value=movie[0].cover)
+              .form-group
+                label.sr-only(for='edit-description') Description
+                textarea#edit-description.form-control(name='description', rows=20, , value=movie[0].description)
+                  #{movie[0].description}
+            button.login-button(type='submit')
+              i.fa.fa-chevron-right
+      // end:Main Form

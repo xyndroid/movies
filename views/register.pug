@@ -31,6 +31,11 @@ block content
               input#female(type='radio', name='reg_gender', placeholder='gender', value = 'f')
               label(for='female') female
             .form-group.login-group-checkbox
+              input#user(type='radio', name='reg_type', placeholder='user', value = '0')
+              label(for='user') User
+              input#manager(type='radio', name='reg_type', placeholder='manager', value = '1')
+              label(for='manager') Manager
+            .form-group.login-group-checkbox
               input#reg_agree(type='checkbox', name='reg_agree')
               label(for='reg_agree')
                 | i agree with
