@@ -2,13 +2,13 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p s#{title}
   // REGISTRATION FORM
   .text-center(style='padding:50px 0')
     .logo register
     // Main Form
     .login-form-1
-      form#register-form.text-left
+      form#register-form.text-left(action='/register', method='POST')
         .login-form-main-message
         .main-login-form
           .login-group
@@ -28,9 +28,9 @@ block content
               label.sr-only(for='reg_lastname') Last Name
               input#reg_lastname.form-control(type='text', name='reg_lastname', placeholder='last name')
             .form-group.login-group-checkbox
-              input#male(type='radio', name='reg_gender', placeholder='username')
+              input#male(type='radio', name='reg_gender', placeholder='gender', value = 'm')
               label(for='male') male
-              input#female(type='radio', name='reg_gender', placeholder='username')
+              input#female(type='radio', name='reg_gender', placeholder='gender', value = 'f')
               label(for='female') female
             .form-group.login-group-checkbox
               input#reg_agree(type='checkbox', name='reg_agree')

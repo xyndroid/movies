@@ -33,7 +33,6 @@ html
               a(href='/movies') Movies
             li
               a(href='/contact') Contact
-        if fullname
           ul.nav.navbar-nav.navbar-right#dropdown
             li.dropdown
               a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
@@ -47,7 +46,6 @@ html
                 li.divider(role='separator')
                 li
                   a(href='/logout') Logout
-        else
           ul.nav.navbar-nav.navbar-right#login
             li
               a(href='/login') Login

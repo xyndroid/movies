@@ -24,7 +24,7 @@ router.post('/', function(req, res, next){
       //console.log(res);
       res.render('index', {
         title: 'Error in login.',
-        message: 'Hello'
+      //  message: 'Hello'
       });
     }else{
       console.log('user\'s last name is ' + result[0].fname);
