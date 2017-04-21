@@ -33,7 +33,7 @@ html
               a(href='/movies') Movies
             li
               a(href='/contact') Contact
-        if !fullname
+        if !fullname && !status
           ul.nav.navbar-nav.navbar-right#login
             li
               a(href='/login') Login
