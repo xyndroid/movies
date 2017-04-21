@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next){
   console.log(req.body);
 
-  query = 'SELECT * FROM user WHERE email = "'+req.body['lg_username']+'" and password = "'+req.body['lg_password']+'" LIMIT 1';
+  query = 'SELECT * FROM user WHERE username = "'+req.body['lg_username']+'" and password = "'+req.body['lg_password']+'" LIMIT 1';
 
   console.log(query);
 
@@ -24,22 +24,31 @@ router.post('/', function(req, res, next){
     }
     if (result == ''){
       console.log('Error in selecting users\n');
-      //console.log(res);
+      req.session.fullname = '';
+      req.session.status = false;
+      req.session.manager = false;
       res.render('index', {
         title: 'Error in login.'
-
       });
     }else{
       console.log('user\'s last name is ' + result[0].fname);
 
       req.session.fullname = result[0].fname + ' ' + result[0].lname;
       req.session.status = true;
+      console.log('Type of user:' + result[0].type);
+      if(result[0].type == 1){
+        console.log('It\'s a Manager');
+        req.session.manager = true;
+      }else{
+        console.log('It\' not a Manager');
+      }
 
       console.log(req.session);
       res.render('index', {
         'fullname': req.session.fullname,
-        title: 'Welcome ' + result[0].lname,
-        authentication: true
+        'status': req.session.status,
+        'manager': req.session.manager,
+        title: 'Welcome ' + result[0].lname
       });
     }
   });

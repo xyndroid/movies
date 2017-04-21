@@ -19,7 +19,7 @@ var contact = require('./routes/contact');
 var register = require('./routes/register');
 var reset = require('./routes/reset');
 var watchlist = require('./routes/watchlist');
-
+var manager = require('./routes/manager');
 // 2
 var app = express();
 
@@ -45,8 +45,10 @@ app.use('/contact', contact);
 app.use('/register', register);
 app.use('/reset', reset);
 app.use('/watchlist', watchlist);
+app.use('/manager', manager);
 
 app.use(function(req, res, next){
+  req.session.manager = false;
   res.session.status = false;
   res.session.fullname = '';
   next();

@@ -48,6 +48,9 @@ html
                   a(href='/profile') Profile
                 li
                   a(href='/watchlist') Watchlist
+                if fullname && status && manager
+                  li
+                    a(href='/manager') Manager
                 li.divider(role='separator')
                 li
                   a(href='/logout') Logout
