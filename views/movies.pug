@@ -1,22 +1,25 @@
 extends layout
 
 block content
-  .container.text-center
-    h1= title
-    p Welcome #{title}
-    p Movies are
   .container
     each movie in movies
-      .container(style='margin-bottom:10px;')
-        .row
-          .container(style='background:white;')
-            .col.col-lg-3
-              p Image
-            .col.col-lg-3
-              span= movie['title']
-              span= movie['rdate']
-              span= movie['language']
-              span= movie['duration']
-              span rating
-            .col.col-lg-6
-              p= movie['description']
+      a(href='/movie/')
+        .container.border.rounded(style='margin-bottom:10px;')
+          .row
+            .container
+              .col.col-lg-3
+                  img(src='/images/'+movie['cover'], alt=movie['title'], width='150')
+              .col.col-lg-3
+                .h3
+                  span= movie['title']
+                .h5
+                  span= 'Release: ' + moment(movie['rdate']).format("MM/DD/YYYY")
+                .h5
+                  span= 'Language: ' + movie['language']
+                .h5
+                  span= 'Length: ' + movie['duration']
+                .h3
+                  span= 'Rating: '
+              .col.col-lg-6
+                .h5
+                  span= movie['description']

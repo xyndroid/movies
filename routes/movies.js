@@ -10,7 +10,7 @@ var movie_duration;
 
 /* GET movies listing. */
 router.get('/', function(req, res, next) {
-  query = 'SELECT * FROM movie';
+  query = 'SELECT * FROM movie, rate_movie, rating WHERE movie.id = rate_movie.movie_id AND rate_movie.rating_id=rating.id';
   pool.query(query, function(error, result){
     console.log('querying movies');
     console.log(query);
