@@ -3,6 +3,7 @@ var router = express.Router();
 
 /* GET movies listing. */
 router.get('/', function(req, res, next) {
+  console.log(req.session);
   res.render('profile', {title: 'Profile page'});
 });
 

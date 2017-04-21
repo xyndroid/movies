@@ -48,6 +48,11 @@ app.use('/reset', reset);
 app.use('/watchlist', watchlist);
 
 
+app.use(function(req, res, next){
+  res.session.fullname = req.session.fullname;
+  next();
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

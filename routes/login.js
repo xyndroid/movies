@@ -18,18 +18,23 @@ router.post('/', function(req, res, next){
   console.log(query);
 
   pool.query(query, function(error, result){
-    if (error){
+    console.log(result);
+    if (result == ''){
       console.log('Error in selecting users\n');
       //console.log(res);
-      res.render('login', {
-        title: 'This is title for POST method.',
+      res.render('index', {
+        title: 'Error in login.',
         message: 'Hello'
       });
     }else{
       console.log('user\'s last name is ' + result[0].fname);
-      req.session.fullname = result[0].fname + ' ' + result[0].lname;
-      $('#login').css('display', 'none');
-      $('#dropdown').css('display', 'block');
+
+      if(!req.session.fullname){
+        req.session.fullname = result[0].fname + ' ' + result[0].lname;
+      }else{
+        req.session.fullname = 0;
+      }
+      console.log(req.session);
       res.render('index', { title: 'Welcome ' + result[0].lname });
     }
   });
