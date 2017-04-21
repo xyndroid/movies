@@ -5,7 +5,7 @@ var movies;
 
 /* GET movies listing. */
 router.get('/', function(req, res, next) {
-  query = 'select m.id, m.title, m.description, m.rdate, m.language, m.duration, m.cover, avg(r.star) as star\
+  query = 'select m.id, m.title, m.description, m.rdate, m.language, m.duration, m.cover, avg(r.star) as star \
             from movie as m, rate_movie as rm, rating as r \
             where m.id = rm.movie_id and rm.rating_id = r.id \
             group by rm.movie_id';
@@ -21,16 +21,16 @@ router.get('/', function(req, res, next) {
           console.log(result.length + ' movies were selected');
           movies = result;
           console.log('movies variable contains ' + movies);
+          res.render('movies', {movies: movies, 'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Movies page'});
         }else{
           console.log('There was error in movies.js file with query returned undefined');
-          res.redirect('/movies');
+          //res.redirect('/movies');
         }
       }else{
         console.log('result from movies table is empty');
       }
     }
   });
-  res.render('movies', {movies: movies, 'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Movies page'});
 });
 
 router.post('/', function(req, res, next) {

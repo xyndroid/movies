@@ -2,23 +2,23 @@ extends layout
 
 block content
   .container
-    p movie["title"]
-    p= test
+    p= movie[0].title
+    p= title
     .row
       .container
         .col.col-lg-3
-          | img(src='/images/' + movie["cover"], width='350')
+          img(src='/images/' + movie[0].cover, width='250')
         .col.col-lg-3
           .h3
-            span movie['title']
+            span= movie[0].title
           .h5
-            span 'Release: ' + movie['rdate']
+            span= 'Release: ' + movie[0].rdate
           .h5
-            span= 'Language: ' + movie['language']
+            span= 'Language: ' + movie[0].language
           .h5
-            span= 'Length: ' + movie["duration"]
+            span= 'Length: ' + movie[0].duration
           .h5
-            span= 'Rating: ' + movie["star"]
+            span= 'Rating: ' + movie[0].star
         .col.col-lg-6
           .h5
-            span= movie["description"]
+            span= movie[0].description

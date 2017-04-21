@@ -64,20 +64,16 @@ router.get('/', function(req, res, next) {
         console.log('result file contains' + result);
         console.log(result.length + ' movies were selected');
         movie_info = result;
-        title = result[0].title;
-        description = result[0].description;
-        cover = result[0].cover;
-        rdate = result[0].rdate;
-        language = result[0].language;
-        star = result[0].star;
-        duration = result[0].duration;
-        console.log('movie info ' + cover);
+        console.log(movie_info);
+        console.log('movie_info'+ movie_info[0].language);
+        console.log(movie_info.language);
+        res.render('movie', {title : 'abctitle', language: movie_info['language'], movie: movie_info});
       }else{
         console.log('result from movies table is empty');
       }
     }
   });
-  res.render('movie', {title : title, description:description, cover: cover, rdate:rdate, language: language, star: star, duration: duration});
+
 });
 
 router.post('/', function(req, res, next) {

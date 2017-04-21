@@ -50,12 +50,14 @@ router.post('/', function(req, res, next){
     }else{
       if(result != ''){
         console.log('movie info is updated');
+        res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Manager Page'});
       }else{
         console.log('result from movies table is empty');
+        res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Manager Page'});
       }
     }
   });
-  res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Manager Page'});
+
 });
 
 module.exports = router;
