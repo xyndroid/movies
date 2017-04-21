@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  // Add Movie FORM
+  .text-center(style='padding:50px 0')
+    .logo AddMovie
+    // Main Form
+    .login-form-2
+      form#register-form.text-left(action='/addmovies', method='POST')
+        .login-form-main-message
+        .main-login-form
+          .login-group
+            .form-group
+              label.sr-only(for='new_title') Username
+              input#new_title.form-control(type='text', name='new_title', placeholder='Title')
+            .form-group
+              label.sr-only(for='new_description') Description
+              input#new_description.form-control(type='text', name='new_description', placeholder='Description')
+            .form-group
+              label.sr-only(for='new_lang') Language
+              input#new_lang.form-control(type='text', name='new_lang', placeholder='Language')
+            .form-group
+              label.sr-only(for='new_duration') Duration
+              input#new_duration.form-control(type='int', name='new_duration', placeholder='Duration')
+            .form-group
+              label.sr-only(for='reg_lastname') Last Name
+              input#reg_lastname.form-control(type='text', name='reg_lastname', placeholder='last name')
+            .form-group.login-group-checkbox
+              input#male(type='radio', name='reg_gender', placeholder='gender', value = 'm')
+              label(for='male') male
+              input#female(type='radio', name='reg_gender', placeholder='gender', value = 'f')
+              label(for='female') female
+            .form-group.login-group-checkbox
+              input#reg_agree(type='checkbox', name='reg_agree')
+              label(for='reg_agree')
+                | i agree with
+                a(href='#') terms
+          button.login-button(type='submit')
+            i.fa.fa-chevron-right
+        .etc-login-form
+          p
+            | already have an account?
+            a(href='/login') login here
+    // end:Main Form

@@ -15,6 +15,7 @@ var profile = require('./routes/profile');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 var movies = require('./routes/movies');
+var addmovies = require('./routes/addmovies');
 var contact = require('./routes/contact');
 var register = require('./routes/register');
 var reset = require('./routes/reset');
@@ -38,6 +39,7 @@ app.use(session({resave: true, saveUninitialized: true, secret: 'SOMERANDOMSECRE
 
 app.use('/', index);
 app.use('/movies', movies);
+app.use('/addmovies', addmovies);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/profile', profile);

@@ -5,6 +5,9 @@ block content
     h1= title
     p Welcome #{title}
     p Movies are
+    p
+      | Want to add a movie? 
+      a(href='/addmovies') Click Here
   .container
     each movie in movies
       .container(style='margin-bottom:10px;')
