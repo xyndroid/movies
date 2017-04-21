@@ -8,7 +8,7 @@ var db;
 
 var databaseConfig = fs.readFileSync(config, 'utf8');
 
-databaseConfig = databaseConfig.split(',');
+databaseConfig = databaseConfig.split(', ');
 
 var pool = mysql.createPool({
     connectionLimit : 100, //important
