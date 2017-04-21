@@ -7,7 +7,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   console.log(req.body);
   console.log('type');
-  res.render('login', {title: 'This is title for GET method.'});
+  //res.render('login', {title: 'This is title for GET method.'});
+  res.render('login');
 });
 
 router.post('/', function(req, res, next){
@@ -41,6 +42,7 @@ router.post('/', function(req, res, next){
         req.session.manager = true;
       }else{
         console.log('It\' not a Manager');
+        req.session.manager = false;
       }
 
       console.log(req.session);

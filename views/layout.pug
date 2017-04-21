@@ -33,33 +33,33 @@ html
               a(href='/movies') Movies
             li
               a(href='/contact') Contact
-        if !fullname && !status
-          ul.nav.navbar-nav.navbar-right#login
-            li
-              a(href='/login') Login
-        else
-          ul.nav.navbar-nav.navbar-right#dropdown
-            li.dropdown
-              a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                | #{fullname}
-                span.caret
-              ul.dropdown-menu
-                li
-                  a(href='/profile') Profile
-                li
-                  a(href='/watchlist') Watchlist
-                if fullname && status && manager
+          if !fullname && !status
+            ul.nav.navbar-nav.navbar-right#login
+              li
+                a(href='/login') Login
+          else
+            ul.nav.navbar-nav.navbar-right#dropdown
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                  | #{fullname}
+                  span.caret
+                ul.dropdown-menu
                   li
-                    a(href='/manager') Manager
-                li.divider(role='separator')
-                li
-                  a(href='/logout') Logout
+                    a(href='/profile') Profile
+                  li
+                    a(href='/watchlist') Watchlist
+                  if fullname && status && manager
+                    li
+                      a(href='/manager') Manager
+                  li.divider(role='separator')
+                  li
+                    a(href='/logout') Logout
               script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
               script(src='https://code.jquery.com/jquery-3.2.1.min.js')
               script(src='javascripts/bootstrap.min.js')
               script(src='javascripts/bootstrap-contact-form.js')
               script(src='javascripts/login-form.js')
-    .container(style='margin-top:100px;')
+    .container(style='margin-top:50px;')
     block content
     footer
       p Copyright &copy; #{new Date().getFullYear()} Movies by C.A

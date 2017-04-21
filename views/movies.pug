@@ -4,3 +4,19 @@ block content
   .container.text-center
     h1= title
     p Welcome #{title}
+    p Movies are
+  .container
+    each movie in movies
+      .container(style='margin-bottom:10px;')
+        .row
+          .container(style='background:white;')
+            .col.col-lg-3
+              p Image
+            .col.col-lg-3
+              span= movie['title']
+              span= movie['rdate']
+              span= movie['language']
+              span= movie['duration']
+              span rating
+            .col.col-lg-6
+              p= movie['description']

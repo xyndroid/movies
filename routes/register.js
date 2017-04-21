@@ -7,8 +7,7 @@ var nodemailer = require('nodemailer');
 router.get('/', function(req, res, next) {
   console.log(req.body);
   console.log('type');
-  res.render('register', {title: 'This is title for GET method.'});
-  res.render('register', {title: 'Welcome to Registration page'});
+  res.render('register');
 });
 
 /* GET contact . */
