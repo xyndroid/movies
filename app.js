@@ -16,7 +16,11 @@ var login = require('./routes/login');
 var logout = require('./routes/logout');
 var movie = require('./routes/movie');
 var movies = require('./routes/movies');
+<<<<<<< HEAD
 var edit = require('./routes/edit');
+=======
+var addmovies = require('./routes/addmovies');
+>>>>>>> 3af479ba59c614f483214a5f04fbc215013ff6e2
 var contact = require('./routes/contact');
 var register = require('./routes/register');
 var reset = require('./routes/reset');
@@ -42,6 +46,7 @@ app.use('/', index);
 app.use('/movie', movie);
 app.use('/movies', movies);
 app.use('/edit', edit);
+app.use('/addmovies', addmovies);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/profile', profile);

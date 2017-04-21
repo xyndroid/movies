@@ -1,6 +1,13 @@
 extends layout
 
 block content
+  .container.text-center
+    h1= title
+    p Welcome #{title}
+    p Movies are
+    p
+      | Want to add a movie?
+      a(href='/addmovies') Click Here
   .container
     each movie in movies
       a(href='/movie?mid='+movie["id"])

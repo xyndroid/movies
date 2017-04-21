@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   res.render('register');
 });
 
-/* GET contact . */
+/* POST contact . */
 router.post('/', function(req, res, next) {
     console.log(req.body);
   //res.render('register', {title: 'This is title for POST method.'});
