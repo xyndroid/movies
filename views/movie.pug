@@ -22,3 +22,19 @@ block content
         .col.col-lg-6
           .h5
             span= movie[0].description
+      if fullname && status
+        .row(stype='margin-top:20px;')
+          .container
+            .col.col-lg-12
+              form(name='review_form', action='/movie/review', method='POST')
+                .row
+                  input(type='hidden' name='movie_id' value=movie[0].id) 
+                .row
+                  input(type='text', placeholder='0-5', name='review_star', value='')
+                .row
+                  input(type='text', placeholder='Review title', name='review_title', value='')
+                .row
+                  textarea(cols='10', rows='15', placeholder='Type your comment', name='review_comment')
+                .row
+                  button.login-button(type='submit')
+                    i.fa.fa-chevron-right

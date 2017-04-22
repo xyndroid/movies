@@ -81,4 +81,18 @@ router.post('/', function(req, res, next) {
   res.render('movie', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Movies page'});
 });
 
+router.post('/review', function(req, res, next) {
+  query = 'INSERT INTO rating (comment, star) VALUES ("'+req.body['review_comment']+'", '+req.body['review_star']+')';
+  pool.query(query, function(error, result){
+    if(!error && result != '' && typeof result != 'undefined'){
+      console.log(result);
+      //query = 'INSERT INTO rate_movie ('+req.session.userID+', '+req.body['movie_id']+', '++') VALUES ()';
+      res.render('movie', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Movies page'});
+    }else{
+      res.render('movie', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Movies page'});
+    }
+
+  });
+});
+
 module.exports = router;

@@ -36,6 +36,7 @@ router.post('/', function(req, res, next){
 
       req.session.fullname = result[0].fname + ' ' + result[0].lname;
       req.session.status = true;
+      req.session.userID = result[0].id;
       console.log('Type of user:' + result[0].type);
       if(result[0].type == 1){
         console.log('It\'s a Manager');
