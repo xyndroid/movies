@@ -24,6 +24,8 @@ var reset = require('./routes/reset');
 var watchlist = require('./routes/watchlist');
 var manager = require('./routes/manager');
 var search = require('./routes/search');
+var remove = require('./routes/remove');
+
 // 2
 var app = express();
 
@@ -54,6 +56,7 @@ app.use('/reset', reset);
 app.use('/watchlist', watchlist);
 app.use('/manager', manager);
 app.use('/search', search);
+app.use('/remove', remove);
 
 app.use(function(req, res, next){
   req.session.manager = false;

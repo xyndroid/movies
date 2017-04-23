@@ -31,8 +31,7 @@ block content
                 input#edit-cover.form-control(type='text', name='cover', value=movie[0].cover)
               .form-group
                 label.sr-only(for='edit-description') Description
-                textarea#edit-description.form-control(name='description', rows=20, , value=movie[0].description)
-                  #{movie[0].description}
+                textarea#edit-description.form-control(name='description', rows=20, value=movie[0].description)
+                  | #{movie[0].description}
             button.login-button(type='submit')
               i.fa.fa-chevron-right
-      // end:Main Form

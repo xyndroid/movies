@@ -19,6 +19,13 @@ block content
             span= 'Length: ' + movie[0].duration
           .h5
             span= 'Rating: ' + movie[0].star
+          .h5
+            span= 'Tags: '
+              each tag in tags
+                if tag['movie_id'] == movie[0].id
+                  a(href='/movies/tag/' + tag['tag'])
+                    div
+                      span= tag['tag']
         .col.col-lg-6
           .h5
             span= movie[0].description
@@ -28,7 +35,7 @@ block content
             .col.col-lg-12
               form(name='review_form', action='/movie/review', method='POST')
                 .row
-                  input(type='hidden' name='movie_id' value=movie[0].id) 
+                  input(type='hidden' name='movie_id' value=movie[0].id)
                 .row
                   input(type='text', placeholder='0-5', name='review_star', value='')
                 .row

@@ -45,10 +45,10 @@ router.post('/', function(req, res, next){
     }else{
       if(result != ''){
         console.log('movie info is updated');
-        res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Manager Page'});
+        res.redirect('movies');
       }else{
         console.log('result from movies table is empty');
-        res.render('manager', {'fullname': req.session.fullname, 'status': req.session.status, 'manager' : req.session.manager, title: 'Manager Page'});
+        res.redirect('movies');
       }
     }
   });

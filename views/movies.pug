@@ -9,7 +9,7 @@ block content
         a(href='/addmovies') Click Here
   .container
     each movie in movies
-      a(href='/movie?mid='+movie["id"])
+      a(href='/movie?mid='+movie['id'])
         .container(style='margin-bottom:10px;')
           .row
             .container
@@ -26,6 +26,36 @@ block content
                   span= 'Length: ' + movie['duration']
                 .h5
                   span= 'Rating: ' + movie['star'] + '/5'
-              .col.col-lg-6
+                .h5
+                  span= 'Tags: '
+                    each tag in tags
+                      if tag['movie_id'] == movie['id']
+                        a(href='/movie/' + tag['movie_id'])
+                          div
+                            span= tag['tag']
+                .h5
+                  span= 'Crews: '
+                    each crew in crews
+                      if crew['movie_id'] == movie['id']
+                        a(href='/movie/' + crew['name'])
+                          div
+                            span= crew['name'] + ' : ' + crew['role']
+                .h5
+                  span= 'Genre: '
+                    each genre in genres
+                      if genre['movie_id'] == movie['id']
+                        a(href='/movie/' + genre['name'])
+                          div
+                            span= genre['genre']
+              .col.col-lg-5
                 .h5
                   span= movie['description']
+              .col.col-lg-1
+                if fullname && status
+                  .container
+                    .row
+                      a(href='/edit?movie_id='+movie.id, title='Edit movie information')
+                        p.glyphicon.glyphicon-pencil
+                    .row
+                      a(href='/remove?movie_id='+movie.id, title='Delete movie information')
+                        p.glyphicon.glyphicon-remove-circle
